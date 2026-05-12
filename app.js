@@ -2,7 +2,7 @@ const cvData = {
     profile: {
         name: 'Deependra Singh',
         title: 'Software Development Engineer',
-        summary: 'Focused on distributed systems, low-latency platforms, and scalable event-driven pipelines.',
+        summary: 'Focused on distributed systems, low-latency platforms, and scalable data-driven pipelines.',
         photo: 'My photo.jpg',
         contact: [
             'Bengaluru, Karnataka • 560035',
@@ -16,9 +16,9 @@ const cvData = {
             period: 'Apr 2026 – Present',
             company: 'Flipkart — Bengaluru, Karnataka',
             bullets: [
-                'Built a <strong>real-time inference pipeline</strong> for user embeddings that consumes <strong>~17K events/sec</strong> across five streams and refreshes short-term embeddings for <strong>300M+ users</strong>.',
-                'Implemented offline PySpark enrichment jobs joining <strong>5+ warehouse tables</strong> and persisted <strong>~830 GB</strong> of metadata into HBase using a single-blob row design for <strong>sub-millisecond reads</strong>.',
-                'Compared Spark Streaming and Flink for model-hosting, and designed a <strong>14-day rolling event history schema</strong> with priority-based retention.'
+                'Real-time inference pipeline (user embeddings): Building a streaming job that consumes ~17K events/sec across 5 user-interaction streams (product page views, add-to-cart, wishlist, buy-now, orders), assembles per-user feature context, and invokes a PyTorch transformer to refresh short-term user embeddings for 300M+ users.',
+                'Built offline enrichment jobs in PySpark joining 5+ data warehouse tables and persisting ~830 GB of user and product metadata into HBase with a single-blob row design for sub-millisecond reads.',
+                'Evaluated Spark Streaming vs Flink and model-hosting strategies (in-process vs. localhost gRPC); designed schema for 14-day rolling event history with priority-based retention.'
             ]
         },
         {
@@ -26,13 +26,13 @@ const cvData = {
             period: 'Jun 2024 – Mar 2026',
             company: 'Flipkart — Bengaluru, Karnataka',
             bullets: [
-                'Architected a push-based notification capability delivering <strong>1B+ notifications/day</strong> by reusing existing scheduling, dispatch, and frequency-capping infrastructure.',
-                'Redesigned dispatch into a <strong>pure execution engine</strong>, moving content fetch and ranking upstream to eliminate provider latency at delivery time.',
-                'Scaled allocation engine to <strong>20K RPS on 7 machines</strong> (from 16K RPS on 32 machines), cleared a <strong>17M-event lag</strong>, and cut delivery latency from <strong>500ms to 146ms</strong>.',
-                'Diagnosed a logging bottleneck with JFR, identified a Netty monitor lock spanning <strong>151 threads</strong>, and proposed streaming persistence to decouple latency from logs.',
-                'Spearheaded Shopsy multi-tenancy onboarding across Spark, Kafka, Aerospike, HBase, and Kubernetes infrastructure.',
-                'Resolved iOS transactional notification latency from <strong>12 hours to ~1 minute</strong> by isolating critical clients in a high-priority delivery topology.',
-                'Recognized with Flipkart Instant Karma Award for operational excellence during peak sale scaling.'
+                'Architected the push-based capability for the notification platform that delivers 1B+ notifications/day, designing it to reuse existing scheduling, dispatch, and frequency-capping infrastructure rather than building a parallel pipeline; enabled time-sensitive customer lifecycle management (CLM) campaigns at platform scale.',
+                'Redesigned the dispatch service from a heavy orchestrator into a pure execution engine by moving content fetching and model-based ranking upstream into a unified allocation layer, eliminating real-time provider latency at delivery time.',
+                'Drove scaling and performance NFRs for peak sale traffic: scaled the allocation engine to 20K RPS on 7 machines (down from 16K RPS on 32 machines, ~78% infra reduction), and the recommendation dispatch service to 24K RPS while clearing a 17M-event lag and dropping content-assignment latency from 500ms to 146ms.',
+                'Diagnosed a logging-layer bottleneck via JFR profiling: identified a Netty monitor lock with 57 min blocked time spanning 151 threads; proposed Netty tuning and migration to a streaming-based logging system to decouple latency from log persistence.',
+                'Spearheaded multi-tenancy onboarding of a new business unit (Shopsy) onto the platform, converting it from single-tenant to multi-tenant by injecting tenant context throughout the allocation, scheduling, and dispatch layers; provisioned dedicated Spark, Kafka, Aerospike, HBase and Kubernetes infrastructure.',
+                'Resolved iOS transactional notification latency from up to 12 hours to ~1 minute by isolating critical transactional clients into a dedicated high-priority delivery topology, eliminating noisy-neighbor effects from promotional traffic during sale events.',
+                'Recognized with Flipkart\'s Instant Karma Award for operational excellence during peak sale scaling. - Link'
             ]
         }
     ],
@@ -58,12 +58,11 @@ const cvData = {
     projects: [
         {
             title: 'Aethel',
-            summary: 'A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3, HDFS) on Google Cloud Dataproc.',
+            summary: 'Aethel - A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3 and HDFS) on Google Cloud Dataproc. Built to replace the typical pile of copy-pasted per-topic Spark jobs with a single YAML-configured platform - onboarding a new topic becomes a config change, not a 400-line fork.',
             bullets: [
-                'Replaced multiple per-topic Spark jobs with a single <strong>YAML-configured ingestion platform</strong>, making new topic onboarding a config change instead of a 400-line fork.',
-                'Built typed source/sink interfaces with fail-fast YAML parsing so connector issues fail early rather than inside long-running Spark jobs.',
-                'Added schema-driven parsing and StreamingQueryListener monitoring to catch consumed-vs-written gaps and prevent schema drift.',
-                'Delivered production-honest semantics with <strong>exactly-once file commits</strong>, <strong>AvailableNow batch triggers</strong>, and deterministic Murmur3 bucketing for stable partitioning.'
+                'Pluggable architecture: source/sink interfaces with typed polymorphic YAML config that fails fast at parse time with descriptive errors, never deep inside a Spark job; a new connector is one config class + one factory branch.',
+                'Schema-driven, observable parsing: a side-effect-free processor parses every record against an explicit Spark StructType; a custom StreamingQueryListener surfaces consumed-vs-written gaps to catch silent schema drift in production.',
+                'Production-honest semantics: exactly-once file commits via Spark\'s _spark_metadata log, AvailableNow trigger for scheduled batch-mode streaming, and deterministic Murmur3 bucketing for stable downstream partitioning.'
             ]
         }
     ],
@@ -94,7 +93,7 @@ const cvData = {
             {
                 title: 'Newton\'s Grand Coding Contest 2022',
                 url: 'https://drive.google.com/file/d/18w_jxLLHcRzT04EceWAIhQ1okgZ-YoiK/view?usp=drive_link',
-                detail: 'Achieved global rank  201 among 14,000 participants.'
+                detail: 'Achieved global rank 201 among 14,000 participants.'
             }
         ]
     }
