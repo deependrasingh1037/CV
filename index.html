@@ -2,114 +2,209 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-    <title>Deependra's Personal Site</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deependra Singh — CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background: #f6f8fb;
+            color: #1d252f;
+        }
+        .page {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 32px;
+        }
+        header {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+        img.profile {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+        }
+        header h1 {
+            margin: 0 0 10px;
+            font-size: 2.7rem;
+        }
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            margin: 12px 0 0;
+            display: grid;
+            gap: 8px;
+        }
+        .contact-list li a {
+            color: #1c5cc7;
+            text-decoration: none;
+        }
+        section {
+            margin-bottom: 28px;
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+        section h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #e1e7ee;
+            padding-bottom: 10px;
+        }
+        .job {
+            margin-bottom: 18px;
+        }
+        .job-title {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-weight: 700;
+        }
+        .job-company {
+            color: #555;
+        }
+        .job-period {
+            color: #777;
+            font-size: 0.95rem;
+        }
+        ul {
+            margin: 12px 0 0 20px;
+        }
+        .skill-grid {
+            display: grid;
+            gap: 12px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        }
+        .skill-group {
+            background: #f3f6fb;
+            padding: 16px;
+            border-radius: 12px;
+        }
+        .skill-group h3 {
+            margin-top: 0;
+            font-size: 1rem;
+        }
+        @media (max-width: 760px) {
+            header {
+                grid-template-columns: 1fr;
+            }
+            .job-title {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
 <body>
-
-
-    <table cellSpacing="20">
-        <tr>
-            <td>
-                <img src="My photo.jpg" 
-                    alt="Deependra's Profile Pic"
-                    width="200"
-                    height="200"
-                >
-            </td>
-            <td>
+    <div class="page">
+        <header>
+            <img class="profile" src="My photo.jpg" alt="Deependra Singh profile photo">
+            <div>
                 <h1>Deependra Singh</h1>
-                <p> <strong>Upcoming SDE Intern @ <a href="https://www.jio.com/" target="_blank">JIO Platforms Limited</a></strong> <br>
-                    <em>Hello viewer, I am Deependra Singh, Junior @ <a href="https://www.iitbhu.ac.in/" target="_blank" >IIT BHU</a></em>
-                </p>
-            </td>
-        </tr>
-    </table>
+                <p><strong>Software Development Engineer</strong> with experience in distributed systems, low-latency pipelines, and large-scale recommendation & notification platforms.</p>
+                <ul class="contact-list">
+                    <li>Bengaluru, Karnataka • 560035</li>
+                    <li>+91 81879 72857 • deependrasingh1037@gmail.com</li>
+                    <li><a href="https://github.com/deependrasingh1037" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/deependra-singh-41943715a/" target="_blank">LinkedIn</a></li>
+                </ul>
+            </div>
+        </header>
 
+        <section>
+            <h2>Work Experience</h2>
+            <article class="job">
+                <div class="job-title">
+                    <span>Software Development Engineer 2</span>
+                    <span class="job-period">Apr 2026 – Present</span>
+                </div>
+                <div class="job-company">Flipkart — Bengaluru, Karnataka</div>
+                <ul>
+                    <li>Built a real-time inference pipeline for user embeddings that consumes ~17K events/sec across 5 interaction streams and refreshes short-term embeddings for 300M+ users.</li>
+                    <li>Implemented offline PySpark enrichment jobs joining 5+ warehouse tables and persisted ~830 GB of user/product metadata into HBase using a single-blob row design for sub-millisecond read performance.</li>
+                    <li>Evaluated Spark Streaming vs Flink and model-hosting approaches, and designed a 14-day rolling event history schema with priority-based retention.</li>
+                </ul>
+            </article>
+            <article class="job">
+                <div class="job-title">
+                    <span>Software Development Engineer 1</span>
+                    <span class="job-period">Jun 2024 – Mar 2026</span>
+                </div>
+                <div class="job-company">Flipkart — Bengaluru, Karnataka</div>
+                <ul>
+                    <li>Architected a push-based notification capability delivering 1B+ notifications/day by reusing existing scheduling, dispatch, and frequency-capping infrastructure.</li>
+                    <li>Redesigned dispatch service into a pure execution engine, moving content fetch and ranking upstream to eliminate provider latency at delivery time.</li>
+                    <li>Scaled allocation engine to 20K RPS on 7 machines (from 16K RPS on 32 machines) and recommendation dispatch to 24K RPS while clearing a 17M-event lag and reducing latency from 500ms to 146ms.</li>
+                    <li>Diagnosed logging bottlenecks using JFR, identified a Netty monitor lock spanning 151 threads, and proposed streaming-based persistence to decouple latency from logging.</li>
+                    <li>Spearheaded multi-tenancy onboarding for Shopsy across Spark, Kafka, Aerospike, HBase, and Kubernetes infrastructure.</li>
+                    <li>Resolved iOS transactional notification latency from 12 hours to ~1 minute with a dedicated high-priority delivery topology.</li>
+                    <li>Recognized with Flipkart Instant Karma Award for operational excellence during peak sale scaling.</li>
+                </ul>
+            </article>
+        </section>
 
-    <hr>
-    <h3>Education</h3>
-    <p> 
-        <ul>
-            <li>Went to IIT BHU - 2020-24</li>
-            <li>Went to Resonance Kota - 2018-20</li>
-            <li>Went to City Children's Academy - 2015-18</li>
-        </ul>
-    </p>
-    <hr>
-    <h3>Skills</h3>
-    <p>
-        <ul>
-            <li> <a href="https://codeforces.com/profile/c0dex" target="_blank">Competitive Programming</a></li>
-            <li>Web Development</li>
-            <li>Machine Learning</li>
-        </ul>
-    </p>
-    <hr>
-    <h3>Hobbies</h3>
-    <p>
-        <ol>
-            <li>Movies</li>
-            <li>Mythological Reading</li>
-            <li>Competitive Programming</li>
-        </ol>
-    </p>
-    <hr>
-    <h3>Work Experience</h3>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>Years</th>
-                <th>Designation</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>2021-22</td>
-                <td>Marketing Co Coordinator</td>
-            </tr>
-            <tr>
-                <td>2021-22</td>
-                <td>Academic Mentor</td>
-            </tr>
-        </tbody>
-    </table>
-    <hr>
-    <h3>Future Goals</h3>
-    <table border="1">
-        <tr>
-            <td>
-                <table cellSpacing="10">
-                    <tr>
-                        <td>iOS Development</td>
-                        <td>&#128516;</td>
-                    </tr>
-                    <tr>
-                        <td>Web Development</td>
-                        <td>&#128525</td>
-                    </tr>
-                </table>
-            </td>
-            <td>    
-                <table cellSpacing="10">
-                    <tr>
-                        <td>Photography</td>
-                        <td>&#128525;</td>
-                    </tr>
-                    <tr>
-                        <td>Singing</td>
-                        <td>&#128151</td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-    <hr>
+        <section>
+            <h2>Education</h2>
+            <div>
+                <strong>IIT BHU Varanasi</strong><br>
+                Bachelor of Technology, Electronics & Communication Engineering<br>
+                CGPA 8.7 / 10 • Nov 2020 – May 2024
+            </div>
+        </section>
 
-    
+        <section>
+            <h2>Skills</h2>
+            <div class="skill-grid">
+                <div class="skill-group">
+                    <h3>Languages & Big Data</h3>
+                    <p>Java, Python, C++, SQL, Spark Structured Streaming, PySpark, Storm, Kafka, Flink</p>
+                </div>
+                <div class="skill-group">
+                    <h3>Storage, Frameworks & Tools</h3>
+                    <p>HBase, Aerospike, MySQL, GCP, Dropwizard, Spring Boot, Docker, Kubernetes, JFR, Git, Maven</p>
+                </div>
+                <div class="skill-group">
+                    <h3>Concepts</h3>
+                    <p>Distributed Systems, Low-Latency Design, System Design, Microservices, OOP, Design Patterns</p>
+                </div>
+            </div>
+        </section>
 
+        <section>
+            <h2>Projects</h2>
+            <article>
+                <strong>Aethel</strong> — A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3, HDFS) on Google Cloud Dataproc.
+                <ul>
+                    <li>Replaced multiple per-topic Spark jobs with a single YAML-configured ingestion platform so new topics require only configuration changes.</li>
+                    <li>Implemented typed source/sink interfaces and fail-fast YAML parsing to catch config issues before runtime.</li>
+                    <li>Added schema-driven parsing and StreamingQueryListener monitoring to surface consumed-vs-written gaps and prevent schema drift.</li>
+                    <li>Delivered production-honest semantics with exactly-once file commits, AvailableNow batch triggers, and deterministic Murmur3 bucketing.</li>
+                </ul>
+            </article>
+        </section>
 
-    <h3><a href="contacts.html" target="_blank">Connect with me</a></h3>
+        <section>
+            <h2>Competitive Programming</h2>
+            <ul>
+                <li>Codeforces: Expert, max rating 1707</li>
+                <li>LeetCode: Guardian, max rating 2259</li>
+                <li>CodeChef: Global Rank 25/24K (Starters 71)</li>
+                <li>Recent contests: Meta Hacker Cup 2025 Round 2 (top 2K), Google Kick Start 2022 Global Rank 591/12K, Newton's Grand Coding Contest 2022 Global Rank 201/14K</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Connect</h2>
+            <p><a href="contacts.html" target="_blank">Open contact details</a></p>
+        </section>
+    </div>
 </body>
 </html>
