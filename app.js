@@ -6,7 +6,7 @@ const cvData = {
         photo: 'My photo.jpg',
         contact: [
             'Bengaluru, Karnataka • 560035',
-            '+91 81879 72857 • deependrasingh1037@gmail.com',
+            '+91 8187972857 • deependrasingh1037@gmail.com',
             '<a href="https://github.com/deependrasingh1037" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/deependrasingh1037/" target="_blank">LinkedIn</a>'
         ]
     },
