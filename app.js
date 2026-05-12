@@ -67,12 +67,37 @@ const cvData = {
             ]
         }
     ],
-    competitiveProgramming: [
-        'Codeforces: Expert, max rating 1707',
-        'LeetCode: Guardian, max rating 2259',
-        'CodeChef: Global Rank 25/24K (Starters 71)',
-        'Recent contests: Meta Hacker Cup 2025 Round 2 (top 2K), Google Kick Start 2022 Global Rank 591/12K, Newton\'s Grand Coding Contest 2022 Global Rank 201/14K'
-    ]
+    competitiveProgramming: {
+        profiles: [
+            {
+                platform: 'Codeforces',
+                url: 'https://codeforces.com/profile/c0dex',
+                summary: 'Achieved Expert with a peak rating of 1707.'
+            },
+            {
+                platform: 'LeetCode',
+                url: 'https://leetcode.com/u/deependra_singh_1037/',
+                summary: 'Achieved Guardian with a peak rating of 2259.'
+            },
+            {
+                platform: 'CodeChef',
+                url: 'https://www.codechef.com/users/godfatherdp',
+                summary: 'Achieved global rank 25 among 24,000+ participants in the Starters division.'
+            }
+        ],
+        contests: [
+            {
+                title: 'Meta Hacker Cup 2025',
+                url: 'https://drive.google.com/file/d/1H08BO22vJYWJIfXA8vV43EfgRwAaJe7G/view?usp=sharing',
+                detail: 'Advanced to Round 2, placing in the top 2,000 globally.'
+            },
+            {
+                title: 'Newton\'s Grand Coding Contest 2022',
+                url: 'https://drive.google.com/file/d/18w_jxLLHcRzT04EceWAIhQ1okgZ-YoiK/view?usp=drive_link',
+                detail: 'Ranked 201 among 14,000 global participants.'
+            }
+        ]
+    }
 };
 
 const createElement = (tag, attrs = {}, children = []) => {
@@ -158,6 +183,33 @@ const renderProject = (project) => {
     return createElement('article', { className: 'job-item' }, [summary, details]);
 };
 
+const renderAnchor = (href, label) => {
+    return createElement('a', { href, target: '_blank', rel: 'noopener noreferrer' }, [label]);
+};
+
+const renderCompetitiveProgramming = (data) => {
+    const profileList = createElement('ul', { className: 'list-clean' });
+    data.profiles.forEach(profile => {
+        const link = renderAnchor(profile.url, profile.platform);
+        const item = createElement('li', {}, [
+            link,
+            ` — ${profile.summary}`
+        ]);
+        profileList.appendChild(item);
+    });
+
+    const contestHeading = createElement('p', { className: 'job-company' }, ['Selected contest achievements']);
+    const contestList = createElement('ul', { className: 'list-clean' });
+
+    data.contests.forEach(contest => {
+        const link = renderAnchor(contest.url, contest.title);
+        const item = createElement('li', {}, [link, ` — ${contest.detail}`]);
+        contestList.appendChild(item);
+    });
+
+    return [profileList, contestHeading, contestList];
+};
+
 const init = () => {
     const root = document.getElementById('cv-root');
     if (!root) return;
@@ -187,7 +239,7 @@ const init = () => {
     const projectsSection = renderSection('Projects', cvData.projects.map(renderProject));
     root.appendChild(projectsSection);
 
-    const cpSection = renderSection('Competitive Programming', [renderList(cvData.competitiveProgramming)]);
+    const cpSection = renderSection('Competitive Programming', renderCompetitiveProgramming(cvData.competitiveProgramming));
     root.appendChild(cpSection);
 
     const connectSection = createElement('section', { className: 'section-card' }, [
