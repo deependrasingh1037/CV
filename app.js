@@ -6,7 +6,7 @@ const cvData = {
         photo: 'My photo.jpg',
         contact: [
             'Bengaluru, Karnataka • 560035',
-            '+91 81879 72857 • deependrasingh1037@gmail.com',
+            '+91 8187972857 • deependrasingh1037@gmail.com',
             '<a href="https://github.com/deependrasingh1037" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/deependrasingh1037/" target="_blank">LinkedIn</a>'
         ]
     },
@@ -32,7 +32,7 @@ const cvData = {
                 'Diagnosed a logging-layer bottleneck via <strong>JFR profiling</strong>: identified a Netty monitor lock with <strong>57 min blocked time</strong> spanning 151 threads; proposed Netty tuning and migration to a streaming-based logging system to decouple latency from log persistence.',
                 'Spearheaded multi-tenancy onboarding of a new business unit (Shopsy) onto the platform, converting it from single-tenant to multi-tenant by injecting tenant context throughout the allocation, scheduling, and dispatch layers; provisioned dedicated <strong>Spark, Kafka, Aerospike, HBase and Kubernetes</strong> infrastructure.',
                 'Resolved iOS transactional notification latency from up to <strong>12 hours to ~1 minute</strong> by isolating critical transactional clients into a dedicated high-priority delivery topology, eliminating noisy-neighbor effects from promotional traffic during sale events.',
-                'Recognized with Flipkart\'s <strong>Instant Karma Award</strong> for operational excellence during peak sale scaling. - Link'
+                'Recognized with Flipkart\'s <strong>Instant Karma Award</strong> for operational excellence during peak sale scaling - <a href="https://drive.google.com/file/d/1DZbzp41is6LWEwJKEBwF_jb954viUSOs/view?usp=sharing" target="_blank" rel="noopener noreferrer">Link</a>'
             ]
         }
     ],
@@ -43,22 +43,56 @@ const cvData = {
     },
     skills: [
         {
-            title: 'Languages & Big Data',
-            items: 'Java, Python, C++, SQL, Spark Structured Streaming, PySpark, Storm, Kafka, Flink'
+            title: 'Languages',
+            tags: [
+                { name: 'Java', level: 90 },
+                { name: 'Python', level: 95 },
+                { name: 'C++', level: 80 },
+                { name: 'SQL', level: 88 }
+            ]
         },
         {
-            title: 'Storage, Frameworks & Tools',
-            items: 'HBase, Aerospike, MySQL, GCP, Dropwizard, Spring Boot, Docker, Kubernetes, JFR, Git, Maven'
+            title: 'Core Concepts',
+            tags: [
+                { name: 'Distributed Systems', level: 92 },
+                { name: 'Low-Latency Design', level: 88 },
+                { name: 'System Design', level: 90 },
+                { name: 'Microservices', level: 86 },
+                { name: 'Object Oriented Programming', level: 92 },
+                { name: 'Design Patterns', level: 90 }
+            ]
         },
         {
-            title: 'Concepts',
-            items: 'Distributed Systems, Low-Latency Design, System Design, Microservices, OOP, Design Patterns'
+            title: 'Big Data & Streaming',
+            tags: [
+                { name: 'Spark Structured Streaming', level: 92 },
+                { name: 'PySpark', level: 90 },
+                { name: 'Storm', level: 72 },
+                { name: 'Kafka', level: 86 },
+                { name: 'Flink', level: 84 }
+            ]
+        },
+        {
+            title: 'Storage & Tools',
+            tags: [
+                { name: 'HBase', level: 82 },
+                { name: 'Aerospike', level: 78 },
+                { name: 'MySQL', level: 86 },
+                { name: 'GCP', level: 80 },
+                { name: 'Dropwizard', level: 74 },
+                { name: 'Spring Boot', level: 86 },
+                { name: 'Docker', level: 88 },
+                { name: 'Kubernetes', level: 82 },
+                { name: 'JFR', level: 75 },
+                { name: 'Git', level: 95 },
+                { name: 'Maven', level: 82 }
+            ]
         }
     ],
     projects: [
         {
             title: 'Aethel',
-            summary: 'Aethel - A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3 and HDFS) on Google Cloud Dataproc. Built to replace the typical pile of copy-pasted per-topic Spark jobs with a single YAML-configured platform - onboarding a new topic becomes a config change, not a 400-line fork.',
+            summary: 'A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3 and HDFS) on Google Cloud Dataproc. Built to replace the typical pile of copy-pasted per-topic Spark jobs with a single YAML-configured platform - onboarding a new topic becomes a config change, not a 400-line fork.',
             bullets: [
                 'Pluggable architecture: source/sink interfaces with typed polymorphic YAML config that <strong>fails fast</strong> at parse time with descriptive errors, never deep inside a Spark job; a new connector is one config class + one factory branch.',
                 'Schema-driven, observable parsing: a side-effect-free processor parses every record against an explicit <strong>Spark StructType</strong>; a custom <strong>StreamingQueryListener</strong> surfaces consumed-vs-written gaps to catch silent schema drift in production.',
@@ -71,29 +105,34 @@ const cvData = {
             {
                 platform: 'Codeforces',
                 url: 'https://codeforces.com/profile/c0dex',
-                summary: 'Achieved Expert with a peak rating of 1707.'
+                summary: 'Achieved Expert with a peak rating of 1707.',
+                icon: '🧠'
             },
             {
                 platform: 'LeetCode',
                 url: 'https://leetcode.com/u/deependra_singh_1037/',
-                summary: 'Achieved Guardian with a peak rating of 2259.'
+                summary: 'Achieved Guardian with a peak rating of 2259.',
+                icon: '💡'
             },
             {
                 platform: 'CodeChef',
                 url: 'https://www.codechef.com/users/godfatherdp',
-                summary: 'Achieved global rank 25 among 24,000+ participants in the Starters division.'
+                summary: 'Achieved global rank 25 among 24,000+ participants in the Starters division.',
+                icon: '🔥'
             }
         ],
         contests: [
             {
                 title: 'Meta Hacker Cup 2025',
                 url: 'https://drive.google.com/file/d/1H08BO22vJYWJIfXA8vV43EfgRwAaJe7G/view?usp=sharing',
-                detail: 'Advanced to Round 2, placing in the top 2,000 globally.'
+                detail: 'Advanced to Round 2, placing in the top 2,000 globally.',
+                icon: '🏆'
             },
             {
                 title: 'Newton\'s Grand Coding Contest 2022',
                 url: 'https://drive.google.com/file/d/18w_jxLLHcRzT04EceWAIhQ1okgZ-YoiK/view?usp=drive_link',
-                detail: 'Achieved global rank 201 among 14,000 participants.'
+                detail: 'Achieved global rank 201 among 14,000 participants.',
+                icon: '🚀'
             }
         ]
     }
@@ -193,6 +232,8 @@ const renderCompetitiveProgramming = (data) => {
     data.profiles.forEach(profile => {
         const link = renderAnchor(profile.url, profile.platform);
         const item = createElement('li', {}, [
+            createElement('span', { className: 'cp-icon' }, [profile.icon]),
+            ' ',
             link,
             ` — ${profile.summary}`
         ]);
@@ -204,7 +245,12 @@ const renderCompetitiveProgramming = (data) => {
 
     data.contests.forEach(contest => {
         const link = renderAnchor(contest.url, contest.title);
-        const item = createElement('li', {}, [link, ` — ${contest.detail}`]);
+        const item = createElement('li', {}, [
+            createElement('span', { className: 'cp-icon' }, [contest.icon]),
+            ' ',
+            link,
+            ` — ${contest.detail}`
+        ]);
         contestList.appendChild(item);
     });
 
@@ -230,9 +276,16 @@ const init = () => {
     root.appendChild(renderSection('Education', [educationBlock]));
 
     const skillsSection = renderSection('Skills', cvData.skills.map(skill => {
+        const tags = createElement('div', { className: 'skill-list' },
+            skill.tags.map(tag => createElement('span', { className: 'skill-badge', style: `--skill-level: ${tag.level}%`, title: `${tag.level}% proficiency` }, [
+                tag.name,
+                createElement('span', { className: 'skill-level' }, [])
+            ]))
+        );
+
         return createElement('div', { className: 'skill-group' }, [
-            createElement('h3', {}, [skill.title]),
-            createElement('p', {}, [skill.items])
+            createElement('h3', { className: 'skill-heading' }, [skill.title]),
+            tags
         ]);
     }));
     root.appendChild(skillsSection);
