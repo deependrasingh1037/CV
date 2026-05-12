@@ -7,7 +7,7 @@ const cvData = {
         contact: [
             'Bengaluru, Karnataka • 560035',
             '+91 81879 72857 • deependrasingh1037@gmail.com',
-            '<a href="https://github.com/deependrasingh1037" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/deependra-singh-41943715a/" target="_blank">LinkedIn</a>'
+            '<a href="https://github.com/deependrasingh1037" target="_blank">GitHub</a> • <a href="https://www.linkedin.com/in/deependrasingh1037/" target="_blank">LinkedIn</a>'
         ]
     },
     experience: [
