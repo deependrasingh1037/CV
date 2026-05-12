@@ -105,29 +105,34 @@ const cvData = {
             {
                 platform: 'Codeforces',
                 url: 'https://codeforces.com/profile/c0dex',
-                summary: 'Achieved Expert with a peak rating of 1707.'
+                summary: 'Achieved Expert with a peak rating of 1707.',
+                icon: '🧠'
             },
             {
                 platform: 'LeetCode',
                 url: 'https://leetcode.com/u/deependra_singh_1037/',
-                summary: 'Achieved Guardian with a peak rating of 2259.'
+                summary: 'Achieved Guardian with a peak rating of 2259.',
+                icon: '💡'
             },
             {
                 platform: 'CodeChef',
                 url: 'https://www.codechef.com/users/godfatherdp',
-                summary: 'Achieved global rank 25 among 24,000+ participants in the Starters division.'
+                summary: 'Achieved global rank 25 among 24,000+ participants in the Starters division.',
+                icon: '🔥'
             }
         ],
         contests: [
             {
                 title: 'Meta Hacker Cup 2025',
                 url: 'https://drive.google.com/file/d/1H08BO22vJYWJIfXA8vV43EfgRwAaJe7G/view?usp=sharing',
-                detail: 'Advanced to Round 2, placing in the top 2,000 globally.'
+                detail: 'Advanced to Round 2, placing in the top 2,000 globally.',
+                icon: '🏆'
             },
             {
                 title: 'Newton\'s Grand Coding Contest 2022',
                 url: 'https://drive.google.com/file/d/18w_jxLLHcRzT04EceWAIhQ1okgZ-YoiK/view?usp=drive_link',
-                detail: 'Achieved global rank 201 among 14,000 participants.'
+                detail: 'Achieved global rank 201 among 14,000 participants.',
+                icon: '🚀'
             }
         ]
     }
@@ -227,6 +232,8 @@ const renderCompetitiveProgramming = (data) => {
     data.profiles.forEach(profile => {
         const link = renderAnchor(profile.url, profile.platform);
         const item = createElement('li', {}, [
+            createElement('span', { className: 'cp-icon' }, [profile.icon]),
+            ' ',
             link,
             ` — ${profile.summary}`
         ]);
@@ -238,7 +245,12 @@ const renderCompetitiveProgramming = (data) => {
 
     data.contests.forEach(contest => {
         const link = renderAnchor(contest.url, contest.title);
-        const item = createElement('li', {}, [link, ` — ${contest.detail}`]);
+        const item = createElement('li', {}, [
+            createElement('span', { className: 'cp-icon' }, [contest.icon]),
+            ' ',
+            link,
+            ` — ${contest.detail}`
+        ]);
         contestList.appendChild(item);
     });
 
