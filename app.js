@@ -92,7 +92,7 @@ const cvData = {
     projects: [
         {
             title: 'Aethel',
-            summary: 'Aethel - A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3 and HDFS) on Google Cloud Dataproc. Built to replace the typical pile of copy-pasted per-topic Spark jobs with a single YAML-configured platform - onboarding a new topic becomes a config change, not a 400-line fork.',
+            summary: 'A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3 and HDFS) on Google Cloud Dataproc. Built to replace the typical pile of copy-pasted per-topic Spark jobs with a single YAML-configured platform - onboarding a new topic becomes a config change, not a 400-line fork.',
             bullets: [
                 'Pluggable architecture: source/sink interfaces with typed polymorphic YAML config that <strong>fails fast</strong> at parse time with descriptive errors, never deep inside a Spark job; a new connector is one config class + one factory branch.',
                 'Schema-driven, observable parsing: a side-effect-free processor parses every record against an explicit <strong>Spark StructType</strong>; a custom <strong>StreamingQueryListener</strong> surfaces consumed-vs-written gaps to catch silent schema drift in production.',
