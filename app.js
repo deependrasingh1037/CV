@@ -43,16 +43,20 @@ const cvData = {
     },
     skills: [
         {
-            title: 'Languages & Big Data',
-            items: 'Java, Python, C++, SQL, Spark Structured Streaming, PySpark, Storm, Kafka, Flink'
+            title: 'Languages',
+            tags: ['Java', 'Python', 'C++', 'SQL']
         },
         {
-            title: 'Storage, Frameworks & Tools',
-            items: 'HBase, Aerospike, MySQL, GCP, Dropwizard, Spring Boot, Docker, Kubernetes, JFR, Git, Maven'
+            title: 'Big Data & Streaming',
+            tags: ['Spark Structured Streaming', 'PySpark', 'Storm', 'Kafka', 'Flink']
         },
         {
-            title: 'Concepts',
-            items: 'Distributed Systems, Low-Latency Design, System Design, Microservices, OOP, Design Patterns'
+            title: 'Storage & Tools',
+            tags: ['HBase', 'Aerospike', 'MySQL', 'GCP', 'Dropwizard', 'Spring Boot', 'Docker', 'Kubernetes', 'JFR', 'Git', 'Maven']
+        },
+        {
+            title: 'Core Concepts',
+            tags: ['Distributed Systems', 'Low-Latency Design', 'System Design', 'Microservices', 'Object Oriented Programming', 'Design Patterns']
         }
     ],
     projects: [
@@ -230,9 +234,13 @@ const init = () => {
     root.appendChild(renderSection('Education', [educationBlock]));
 
     const skillsSection = renderSection('Skills', cvData.skills.map(skill => {
+        const tags = createElement('div', { className: 'skill-list' },
+            skill.tags.map(tag => createElement('span', { className: 'skill-badge' }, [tag]))
+        );
+
         return createElement('div', { className: 'skill-group' }, [
-            createElement('h3', {}, [skill.title]),
-            createElement('p', {}, [skill.items])
+            createElement('h3', { className: 'skill-heading' }, [skill.title]),
+            tags
         ]);
     }));
     root.appendChild(skillsSection);
