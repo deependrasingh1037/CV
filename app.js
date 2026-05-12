@@ -44,19 +44,49 @@ const cvData = {
     skills: [
         {
             title: 'Languages',
-            tags: ['Java', 'Python', 'C++', 'SQL']
+            tags: [
+                { name: 'Java', level: 90 },
+                { name: 'Python', level: 95 },
+                { name: 'C++', level: 80 },
+                { name: 'SQL', level: 88 }
+            ]
         },
         {
             title: 'Big Data & Streaming',
-            tags: ['Spark Structured Streaming', 'PySpark', 'Storm', 'Kafka', 'Flink']
+            tags: [
+                { name: 'Spark Structured Streaming', level: 92 },
+                { name: 'PySpark', level: 90 },
+                { name: 'Storm', level: 72 },
+                { name: 'Kafka', level: 86 },
+                { name: 'Flink', level: 84 }
+            ]
         },
         {
             title: 'Storage & Tools',
-            tags: ['HBase', 'Aerospike', 'MySQL', 'GCP', 'Dropwizard', 'Spring Boot', 'Docker', 'Kubernetes', 'JFR', 'Git', 'Maven']
+            tags: [
+                { name: 'HBase', level: 82 },
+                { name: 'Aerospike', level: 78 },
+                { name: 'MySQL', level: 86 },
+                { name: 'GCP', level: 80 },
+                { name: 'Dropwizard', level: 74 },
+                { name: 'Spring Boot', level: 86 },
+                { name: 'Docker', level: 88 },
+                { name: 'Kubernetes', level: 82 },
+                { name: 'JFR', level: 75 },
+                { name: 'Git', level: 95 },
+                { name: 'Maven', level: 82 }
+            ]
         },
         {
             title: 'Core Concepts',
-            tags: ['Distributed Systems', 'Low-Latency Design', 'System Design', 'Microservices', 'Object Oriented Programming', 'Design Patterns']
+            tags: [
+                { name: 'Distributed Systems', level: 92 },
+                { name: 'Low-Latency Design', level: 88 },
+                { name: 'System Design', level: 90 },
+                { name: 'Microservices', level: 86 },
+                { name: 'Object Oriented Programming', level: 92 },
+                { name: 'Design Patterns', level: 90 }
+            ]
         }
     ],
     projects: [
@@ -235,7 +265,10 @@ const init = () => {
 
     const skillsSection = renderSection('Skills', cvData.skills.map(skill => {
         const tags = createElement('div', { className: 'skill-list' },
-            skill.tags.map(tag => createElement('span', { className: 'skill-badge' }, [tag]))
+            skill.tags.map(tag => createElement('span', { className: 'skill-badge', style: `--skill-level: ${tag.level}%`, title: `${tag.level}% proficiency` }, [
+                tag.name,
+                createElement('span', { className: 'skill-level' }, [])
+            ]))
         );
 
         return createElement('div', { className: 'skill-group' }, [

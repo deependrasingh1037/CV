@@ -237,6 +237,7 @@ a:focus {
 }
 
 .skill-badge {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -248,10 +249,28 @@ a:focus {
     font-weight: 600;
     border: 1px solid rgba(31, 93, 255, 0.12);
     white-space: nowrap;
+    overflow: hidden;
 }
 
 .skill-badge:hover {
     background: rgba(31, 93, 255, 0.12);
+}
+
+.skill-level {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    width: 0;
+    background: var(--primary);
+    border-radius: 999px;
+    opacity: 0;
+    transition: width 220ms ease, opacity 220ms ease;
+}
+
+.skill-badge:hover .skill-level {
+    width: var(--skill-level, 70%);
+    opacity: 1;
 }
 
 .skill-group p {
