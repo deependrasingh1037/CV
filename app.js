@@ -16,9 +16,9 @@ const cvData = {
             period: 'Apr 2026 – Present',
             company: 'Flipkart — Bengaluru, Karnataka',
             bullets: [
-                'Built a real-time inference pipeline for user embeddings that consumes ~17K events/sec across 5 interaction streams and refreshes short-term embeddings for 300M+ users.',
-                'Implemented offline PySpark enrichment jobs joining 5+ warehouse tables and persisted ~830 GB of user/product metadata into HBase using a single-blob row design for sub-millisecond read performance.',
-                'Evaluated Spark Streaming vs Flink and model-hosting approaches, and designed a 14-day rolling event history schema with priority-based retention.'
+                'Built a <strong>real-time inference pipeline</strong> for user embeddings that consumes <strong>~17K events/sec</strong> across five streams and refreshes short-term embeddings for <strong>300M+ users</strong>.',
+                'Implemented offline PySpark enrichment jobs joining <strong>5+ warehouse tables</strong> and persisted <strong>~830 GB</strong> of metadata into HBase using a single-blob row design for <strong>sub-millisecond reads</strong>.',
+                'Compared Spark Streaming and Flink for model-hosting, and designed a <strong>14-day rolling event history schema</strong> with priority-based retention.'
             ]
         },
         {
@@ -26,12 +26,12 @@ const cvData = {
             period: 'Jun 2024 – Mar 2026',
             company: 'Flipkart — Bengaluru, Karnataka',
             bullets: [
-                'Architected a push-based notification capability delivering 1B+ notifications/day by reusing existing scheduling, dispatch, and frequency-capping infrastructure.',
-                'Redesigned dispatch service into a pure execution engine, moving content fetch and ranking upstream to eliminate provider latency at delivery time.',
-                'Scaled allocation engine to 20K RPS on 7 machines (from 16K RPS on 32 machines) and recommendation dispatch to 24K RPS while clearing a 17M-event lag and reducing latency from 500ms to 146ms.',
-                'Diagnosed logging bottlenecks using JFR, identified a Netty monitor lock spanning 151 threads, and proposed streaming-based persistence to decouple latency from logging.',
-                'Spearheaded multi-tenancy onboarding for Shopsy across Spark, Kafka, Aerospike, HBase, and Kubernetes infrastructure.',
-                'Resolved iOS transactional notification latency from 12 hours to ~1 minute with a dedicated high-priority delivery topology.',
+                'Architected a push-based notification capability delivering <strong>1B+ notifications/day</strong> by reusing existing scheduling, dispatch, and frequency-capping infrastructure.',
+                'Redesigned dispatch into a <strong>pure execution engine</strong>, moving content fetch and ranking upstream to eliminate provider latency at delivery time.',
+                'Scaled allocation engine to <strong>20K RPS on 7 machines</strong> (from 16K RPS on 32 machines), cleared a <strong>17M-event lag</strong>, and cut delivery latency from <strong>500ms to 146ms</strong>.',
+                'Diagnosed a logging bottleneck with JFR, identified a Netty monitor lock spanning <strong>151 threads</strong>, and proposed streaming persistence to decouple latency from logs.',
+                'Spearheaded Shopsy multi-tenancy onboarding across Spark, Kafka, Aerospike, HBase, and Kubernetes infrastructure.',
+                'Resolved iOS transactional notification latency from <strong>12 hours to ~1 minute</strong> by isolating critical clients in a high-priority delivery topology.',
                 'Recognized with Flipkart Instant Karma Award for operational excellence during peak sale scaling.'
             ]
         }
@@ -60,10 +60,10 @@ const cvData = {
             title: 'Aethel',
             summary: 'A pluggable Spark Structured Streaming ingestion engine in Java that lands Kafka events into partitioned object-store sinks (GCS, S3, HDFS) on Google Cloud Dataproc.',
             bullets: [
-                'Replaced multiple per-topic Spark jobs with a single YAML-configured ingestion platform so new topics require only configuration changes.',
-                'Implemented typed source/sink interfaces and fail-fast YAML parsing to catch config issues before runtime.',
-                'Added schema-driven parsing and StreamingQueryListener monitoring to surface consumed-vs-written gaps and prevent schema drift.',
-                'Delivered production-honest semantics with exactly-once file commits, AvailableNow batch triggers, and deterministic Murmur3 bucketing.'
+                'Replaced multiple per-topic Spark jobs with a single <strong>YAML-configured ingestion platform</strong>, making new topic onboarding a config change instead of a 400-line fork.',
+                'Built typed source/sink interfaces with fail-fast YAML parsing so connector issues fail early rather than inside long-running Spark jobs.',
+                'Added schema-driven parsing and StreamingQueryListener monitoring to catch consumed-vs-written gaps and prevent schema drift.',
+                'Delivered production-honest semantics with <strong>exactly-once file commits</strong>, <strong>AvailableNow batch triggers</strong>, and deterministic Murmur3 bucketing for stable partitioning.'
             ]
         }
     ],
@@ -94,7 +94,7 @@ const cvData = {
             {
                 title: 'Newton\'s Grand Coding Contest 2022',
                 url: 'https://drive.google.com/file/d/18w_jxLLHcRzT04EceWAIhQ1okgZ-YoiK/view?usp=drive_link',
-                detail: 'Ranked 201 among 14,000 global participants.'
+                detail: 'Achieved global rank  201 among 14,000 participants.'
             }
         ]
     }
@@ -124,7 +124,9 @@ const createElement = (tag, attrs = {}, children = []) => {
 const renderList = (items) => {
     const list = createElement('ul', { className: 'list-clean' });
     items.forEach(item => {
-        const listItem = createElement('li', {}, [item]);
+        const listItem = typeof item === 'string'
+            ? createElement('li', { html: item })
+            : createElement('li', {}, [item]);
         list.appendChild(listItem);
     });
     return list;
@@ -198,7 +200,7 @@ const renderCompetitiveProgramming = (data) => {
         profileList.appendChild(item);
     });
 
-    const contestHeading = createElement('p', { className: 'job-company' }, ['Selected contest achievements']);
+    const contestHeading = createElement('p', { className: 'job-company' }, ['Recent contest achievements']);
     const contestList = createElement('ul', { className: 'list-clean' });
 
     data.contests.forEach(contest => {
