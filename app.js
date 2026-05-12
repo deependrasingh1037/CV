@@ -32,7 +32,7 @@ const cvData = {
                 'Diagnosed a logging-layer bottleneck via <strong>JFR profiling</strong>: identified a Netty monitor lock with <strong>57 min blocked time</strong> spanning 151 threads; proposed Netty tuning and migration to a streaming-based logging system to decouple latency from log persistence.',
                 'Spearheaded multi-tenancy onboarding of a new business unit (Shopsy) onto the platform, converting it from single-tenant to multi-tenant by injecting tenant context throughout the allocation, scheduling, and dispatch layers; provisioned dedicated <strong>Spark, Kafka, Aerospike, HBase and Kubernetes</strong> infrastructure.',
                 'Resolved iOS transactional notification latency from up to <strong>12 hours to ~1 minute</strong> by isolating critical transactional clients into a dedicated high-priority delivery topology, eliminating noisy-neighbor effects from promotional traffic during sale events.',
-                'Recognized with Flipkart\'s <strong>Instant Karma Award</strong> for operational excellence during peak sale scaling. - Link'
+                'Recognized with Flipkart\'s <strong>Instant Karma Award</strong> for operational excellence during peak sale scaling - <a href="https://drive.google.com/file/d/1DZbzp41is6LWEwJKEBwF_jb954viUSOs/view?usp=sharing" target="_blank" rel="noopener noreferrer">Link</a>'
             ]
         }
     ],
@@ -49,6 +49,17 @@ const cvData = {
                 { name: 'Python', level: 95 },
                 { name: 'C++', level: 80 },
                 { name: 'SQL', level: 88 }
+            ]
+        },
+        {
+            title: 'Core Concepts',
+            tags: [
+                { name: 'Distributed Systems', level: 92 },
+                { name: 'Low-Latency Design', level: 88 },
+                { name: 'System Design', level: 90 },
+                { name: 'Microservices', level: 86 },
+                { name: 'Object Oriented Programming', level: 92 },
+                { name: 'Design Patterns', level: 90 }
             ]
         },
         {
@@ -75,17 +86,6 @@ const cvData = {
                 { name: 'JFR', level: 75 },
                 { name: 'Git', level: 95 },
                 { name: 'Maven', level: 82 }
-            ]
-        },
-        {
-            title: 'Core Concepts',
-            tags: [
-                { name: 'Distributed Systems', level: 92 },
-                { name: 'Low-Latency Design', level: 88 },
-                { name: 'System Design', level: 90 },
-                { name: 'Microservices', level: 86 },
-                { name: 'Object Oriented Programming', level: 92 },
-                { name: 'Design Patterns', level: 90 }
             ]
         }
     ],
