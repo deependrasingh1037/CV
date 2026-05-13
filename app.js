@@ -261,7 +261,9 @@ const init = () => {
     const root = document.getElementById('cv-root');
     if (!root) return;
 
-    // Navigation bar
+    const profileElement = renderProfile(cvData.profile);
+    profileElement.id = 'profile';
+
     const nav = createElement('nav', { className: 'nav-bar' }, [
         createElement('button', { onclick: "document.getElementById('profile').scrollIntoView({behavior: 'smooth'})" }, ['Profile']),
         createElement('button', { onclick: "document.getElementById('work-experience').scrollIntoView({behavior: 'smooth'})" }, ['Work Experience']),
@@ -271,11 +273,28 @@ const init = () => {
         createElement('button', { onclick: "document.getElementById('competitive-programming').scrollIntoView({behavior: 'smooth'})" }, ['Competitive Programming']),
         createElement('button', { onclick: "document.getElementById('connect').scrollIntoView({behavior: 'smooth'})" }, ['Contact'])
     ]);
-    root.appendChild(nav);
 
-    const profileElement = renderProfile(cvData.profile);
-    profileElement.id = 'profile';
+    const toggleButton = createElement('button', { className: 'nav-toggle', type: 'button', 'aria-expanded': 'false', 'aria-label': 'Open navigation menu' }, [
+        createElement('span', { className: 'bar' }),
+        createElement('span', { className: 'bar' }),
+        createElement('span', { className: 'bar' })
+    ]);
+
+    const topNavWrapper = createElement('div', { className: 'top-nav-wrapper' }, [toggleButton, nav]);
+    root.appendChild(topNavWrapper);
     root.appendChild(profileElement);
+
+    toggleButton.addEventListener('click', () => {
+        const isOpen = topNavWrapper.classList.toggle('open');
+        toggleButton.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    nav.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+            topNavWrapper.classList.remove('open');
+            toggleButton.setAttribute('aria-expanded', 'false');
+        });
+    });
 
     const experienceSection = renderSection('Work Experience', cvData.experience.map(renderJob), 'work-experience');
     root.appendChild(experienceSection);
