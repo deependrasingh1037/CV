@@ -94,13 +94,31 @@ a:focus {
     margin: 3px 0;
     border-radius: 999px;
     background: var(--secondary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.top-nav-wrapper.open .nav-toggle .bar:nth-child(1) {
+    transform: translateY(5px) rotate(45deg);
+}
+
+.top-nav-wrapper.open .nav-toggle .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.top-nav-wrapper.open .nav-toggle .bar:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg);
 }
 
 .nav-bar {
-    display: none;
+    display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
-    padding: 1rem;
+    padding: 0;
+    width: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: scaleX(0);
+    transform-origin: left center;
     background: rgba(255, 255, 255, 0.96);
     border-radius: 24px;
     border: 1px solid rgba(31, 93, 255, 0.14);
@@ -109,11 +127,32 @@ a:focus {
     flex: 1;
     align-items: center;
     justify-content: flex-start;
-    overflow-x: auto;
+    overflow-x: hidden;
+    transition: width 0.35s ease, opacity 0.25s ease, transform 0.35s ease, padding 0.25s ease, visibility 0.25s ease;
 }
 
 .top-nav-wrapper.open .nav-bar {
-    display: flex;
+    width: calc(100% - 62px);
+    opacity: 1;
+    visibility: visible;
+    transform: scaleX(1);
+    padding: 1rem;
+    overflow-x: auto;
+}
+
+.nav-bar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, rgba(31, 93, 255, 0.12), rgba(255, 255, 255, 0));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+
+.top-nav-wrapper.open .nav-bar::before {
+    opacity: 1;
 }
 
 .nav-bar button {
@@ -125,7 +164,7 @@ a:focus {
     cursor: pointer;
     font-size: 0.94rem;
     font-weight: 600;
-    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .nav-bar button:hover,
