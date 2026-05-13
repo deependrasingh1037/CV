@@ -66,17 +66,21 @@ a:focus {
     gap: 0.75rem;
     margin-bottom: 2rem;
     width: 100%;
+    justify-content: flex-start;
 }
 
 .nav-toggle {
     width: 44px;
     height: 42px;
     border: 1px solid rgba(31, 93, 255, 0.18);
+    margin-left: -0.4rem;
     border-radius: 14px;
     background: rgba(255, 255, 255, 0.92);
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0px;
     cursor: pointer;
     padding: 0.35rem;
     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
@@ -132,7 +136,9 @@ a:focus {
 }
 
 .top-nav-wrapper.open .nav-bar {
-    width: calc(100% - 62px);
+    width: auto;
+    flex: 1;
+    max-width: calc(100% - 56px);
     opacity: 1;
     visibility: visible;
     transform: scaleX(1);
