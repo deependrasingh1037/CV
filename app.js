@@ -170,8 +170,8 @@ const renderList = (items) => {
     return list;
 };
 
-const renderSection = (title, contentNodes) => {
-    const section = createElement('section', { className: 'section-card' });
+const renderSection = (title, contentNodes, id) => {
+    const section = createElement('section', { className: 'section-card', id });
     section.appendChild(createElement('h2', { className: 'section-title' }, [title]));
     contentNodes.flat().forEach(node => section.appendChild(node));
     return section;
@@ -261,9 +261,23 @@ const init = () => {
     const root = document.getElementById('cv-root');
     if (!root) return;
 
-    root.appendChild(renderProfile(cvData.profile));
+    // Navigation bar
+    const nav = createElement('nav', { className: 'nav-bar' }, [
+        createElement('button', { onclick: "document.getElementById('profile').scrollIntoView({behavior: 'smooth'})" }, ['Profile']),
+        createElement('button', { onclick: "document.getElementById('work-experience').scrollIntoView({behavior: 'smooth'})" }, ['Work Experience']),
+        createElement('button', { onclick: "document.getElementById('education').scrollIntoView({behavior: 'smooth'})" }, ['Education']),
+        createElement('button', { onclick: "document.getElementById('skills').scrollIntoView({behavior: 'smooth'})" }, ['Skills']),
+        createElement('button', { onclick: "document.getElementById('projects').scrollIntoView({behavior: 'smooth'})" }, ['Projects']),
+        createElement('button', { onclick: "document.getElementById('competitive-programming').scrollIntoView({behavior: 'smooth'})" }, ['Competitive Programming']),
+        createElement('button', { onclick: "document.getElementById('connect').scrollIntoView({behavior: 'smooth'})" }, ['Contact'])
+    ]);
+    root.appendChild(nav);
 
-    const experienceSection = renderSection('Work Experience', cvData.experience.map(renderJob));
+    const profileElement = renderProfile(cvData.profile);
+    profileElement.id = 'profile';
+    root.appendChild(profileElement);
+
+    const experienceSection = renderSection('Work Experience', cvData.experience.map(renderJob), 'work-experience');
     root.appendChild(experienceSection);
 
     const educationBlock = createElement('div', {}, [
@@ -273,7 +287,7 @@ const init = () => {
         createElement('br'),
         createElement('span', {}, [cvData.education.details])
     ]);
-    root.appendChild(renderSection('Education', [educationBlock]));
+    root.appendChild(renderSection('Education', [educationBlock], 'education'));
 
     const skillsSection = renderSection('Skills', cvData.skills.map(skill => {
         const tags = createElement('div', { className: 'skill-list' },
@@ -287,16 +301,16 @@ const init = () => {
             createElement('h3', { className: 'skill-heading' }, [skill.title]),
             tags
         ]);
-    }));
+    }), 'skills');
     root.appendChild(skillsSection);
 
-    const projectsSection = renderSection('Projects', cvData.projects.map(renderProject));
+    const projectsSection = renderSection('Projects', cvData.projects.map(renderProject), 'projects');
     root.appendChild(projectsSection);
 
-    const cpSection = renderSection('Competitive Programming', renderCompetitiveProgramming(cvData.competitiveProgramming));
+    const cpSection = renderSection('Competitive Programming', renderCompetitiveProgramming(cvData.competitiveProgramming), 'competitive-programming');
     root.appendChild(cpSection);
 
-    const connectSection = createElement('section', { className: 'section-card' }, [
+    const connectSection = createElement('section', { className: 'section-card', id: 'connect' }, [
         createElement('h2', { className: 'section-title' }, ['Connect']),
         createElement('p', {}, [createElement('a', { href: 'contacts.html', target: '_blank' }, ['Open contact details'])])
     ]);
