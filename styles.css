@@ -61,9 +61,11 @@ a:focus {
     position: sticky;
     top: 1rem;
     z-index: 15;
-    display: grid;
+    display: flex;
+    align-items: center;
     gap: 0.75rem;
     margin-bottom: 2rem;
+    width: 100%;
 }
 
 .nav-toggle {
@@ -79,7 +81,6 @@ a:focus {
     padding: 0.35rem;
     transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
-
 .nav-toggle:hover,
 .nav-toggle:focus {
     transform: translateY(-1px);
@@ -105,6 +106,10 @@ a:focus {
     border: 1px solid rgba(31, 93, 255, 0.14);
     box-shadow: 0 28px 60px rgba(24, 56, 108, 0.1);
     backdrop-filter: blur(16px);
+    flex: 1;
+    align-items: center;
+    justify-content: flex-start;
+    overflow-x: auto;
 }
 
 .top-nav-wrapper.open .nav-bar {
@@ -138,13 +143,18 @@ a:focus {
         right: 1rem;
         top: 1rem;
         z-index: 20;
+        flex-wrap: wrap;
+        padding: 0.5rem 0.25rem;
     }
 
     .nav-bar {
         width: 100%;
     }
-}
 
+    .nav-bar button {
+        flex: 0 0 auto;
+    }
+}
 .site-header {
     display: grid;
     grid-template-columns: minmax(0, 240px) 1fr;
