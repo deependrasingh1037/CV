@@ -105,7 +105,7 @@ const cvData = {
             {
                 platform: 'Codeforces',
                 url: 'https://codeforces.com/profile/c0dex',
-                summary: 'Achieved Expert with a peak rating of 1707.',
+                summary: 'Achieved Expert with a peak rating of 1723.',
                 icon: '🧠'
             },
             {
